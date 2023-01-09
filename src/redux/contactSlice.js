@@ -7,9 +7,15 @@ export const contactsApi = createApi({
   }),
   endpoints: builder => ({
     fetchContacts: builder.query({
-      query: () => `/contacts`,
+      query: () => '/contacts',
+    }),
+    deletoContact: builder.mutation({
+      query: contactId => ({
+        url: `/contacts/${contactId}`,
+        method: 'DELETE',
+      }),
     }),
   }),
 });
 
-export const { useFetchContactsQuery } = contactsApi;
+export const { useFetchContactsQuery, useDeletoContactMutation } = contactsApi;

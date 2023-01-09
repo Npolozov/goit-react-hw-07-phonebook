@@ -18,7 +18,6 @@ export const List = () => {
   // console.log(visibleContact);
 
   // const totalContact = contacts.length;
-  // console.log(contacts.length);
 
   return (
     <>
