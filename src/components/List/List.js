@@ -8,7 +8,7 @@ export const List = () => {
   const { data: contacts } = useFetchContactsQuery();
   console.log(contacts);
 
-  const filter = useSelector(getStatusFilter);
+  // const filter = useSelector(getStatusFilter);
 
   // const normalizeFilter = filter.toLowerCase();
 
@@ -17,14 +17,12 @@ export const List = () => {
   // );
   // console.log(visibleContact);
 
-  // // const totalContact = contacts.length;
+  // const totalContact = contacts.length;
   // console.log(contacts.length);
 
   return (
     <>
-      {/* {contacts && (
-        <TotalParagraf>Total contacts:{totalContact} </TotalParagraf>
-      )} */}
+      {/* <TotalParagraf>Total contacts:{totalContact} </TotalParagraf> */}
       {contacts && (
         <ListStyle>
           {contacts.map(({ name, number, id }) => (
