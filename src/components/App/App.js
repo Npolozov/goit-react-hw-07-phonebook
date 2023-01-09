@@ -13,10 +13,14 @@ import { GlobalStyle } from '../GlobalStyles.styled';
 import { OpenModal } from 'components/Modal/Modal';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useFetchContactsQuery } from 'redux/contactSlice';
 
 export const App = () => {
-  // const contacts = useSelector(getContact);
+  const { data: contacts, isFetching, isError } = useFetchContactsQuery();
   const [showModal, setShowModal] = useState(false);
+  const showConatctList = contacts && contacts.length > 0;
+  const showEmptyBook =
+    contacts && contacts.length === 0 && !isFetching && !isError;
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -38,8 +42,9 @@ export const App = () => {
         </Wrapper>
         <WrapperContact>
           <Title>Contacts</Title>
-          <Filter />
-          <List />
+          {showConatctList && <Filter />}
+          {showConatctList && <List />}
+          {showEmptyBook && <p>Your phonebook is empty. Please add contact.</p>}
         </WrapperContact>
         <ToastContainer autoClose={2000} position="top-right" />
       </Container>

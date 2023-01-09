@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DebounceInput } from 'react-debounce-input';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -10,7 +11,7 @@ export const Label = styled.label`
   margin-bottom: 10px;
 `;
 
-export const Input = styled.input`
+export const Input = styled(DebounceInput)`
   width: 300px;
   padding: 10px;
 `;

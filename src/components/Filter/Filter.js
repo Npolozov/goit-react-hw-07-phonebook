@@ -13,6 +13,8 @@ export const Filter = () => {
     <Wrapper>
       <Label>Find contacts by name</Label>
       <Input
+        minLength={2}
+        debounceTimeout={300}
         value={filterValue}
         onChange={e => dispatch(updateFilter(e.target.value))}
       ></Input>

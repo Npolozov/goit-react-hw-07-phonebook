@@ -1,8 +1,10 @@
 import { Button, ConteinerButton } from './ListContact.styled';
 import PropTypes from 'prop-types';
+import { useDeletoContactMutation } from 'redux/contactSlice';
 
 export function ListContact({ name, number, id }) {
-  // const handleDelete = () => dispatch(deleteContact(id));
+  const [handleDelete, { isLoading: isDeleting }] = useDeletoContactMutation();
+  console.log(handleDelete);
 
   return (
     <>
@@ -10,7 +12,9 @@ export function ListContact({ name, number, id }) {
         {name}: <span>{number}</span>
       </p>
       <ConteinerButton>
-        <Button onClick={null}>Delete</Button>
+        <Button onClick={() => handleDelete(id)}>
+          {isDeleting ? 'Deleting...' : 'Delete'}
+        </Button>
       </ConteinerButton>
     </>
   );
