@@ -6,16 +6,12 @@ import { useFetchContactsQuery } from 'redux/contactSlice';
 import { Loadder } from 'helper/Loadder';
 
 export const List = () => {
-  const { data: contacts } = useFetchContactsQuery();
-  console.log(contacts);
+  const { data: contacts, isFetching } = useFetchContactsQuery();
+  console.log(isFetching);
   const filter = useSelector(getStatusFilter);
 
   if (!contacts) {
-    return (
-      <div>
-        <Loadder />
-      </div>
-    );
+    return;
   }
 
   const normalizeFilter = filter.toLowerCase();
@@ -30,6 +26,11 @@ export const List = () => {
   return (
     <>
       <TotalParagraf>Total contacts:{totalContact} </TotalParagraf>
+      {isFetching && (
+        <div>
+          <Loadder />
+        </div>
+      )}
       {totalContact > 0 && (
         <ListStyle>
           {visibleContact.map(({ name, number, id }) => (

@@ -43,7 +43,7 @@ export const App = () => {
         <WrapperContact>
           <Title>Contacts</Title>
           {showConatctList && <Filter />}
-          {showConatctList && <List />}
+          <List />
           {showEmptyBook && <p>Your phonebook is empty. Please add contact.</p>}
         </WrapperContact>
         <ToastContainer autoClose={2000} position="top-right" />
