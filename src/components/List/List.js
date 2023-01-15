@@ -3,7 +3,6 @@ import { ListStyle, ItemStyle, TotalParagraf } from './List.styled';
 import { useSelector } from 'react-redux';
 import { getStatusFilter } from 'redux/selectors';
 import { useFetchContactsQuery } from 'redux/contactSlice';
-import { Loadder } from 'helper/Loadder';
 
 export const List = () => {
   const { data: contacts, isFetching } = useFetchContactsQuery();
@@ -26,11 +25,6 @@ export const List = () => {
   return (
     <>
       <TotalParagraf>Total contacts:{totalContact} </TotalParagraf>
-      {isFetching && (
-        <div>
-          <Loadder />
-        </div>
-      )}
       {totalContact > 0 && (
         <ListStyle>
           {visibleContact.map(({ name, number, id }) => (

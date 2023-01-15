@@ -14,6 +14,7 @@ import { OpenModal } from 'components/Modal/Modal';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useFetchContactsQuery } from 'redux/contactSlice';
+import { Loadder } from 'helper/Loadder';
 
 export const App = () => {
   const { data: contacts, isFetching, isError } = useFetchContactsQuery();
@@ -42,6 +43,11 @@ export const App = () => {
         </Wrapper>
         <WrapperContact>
           <Title>Contacts</Title>
+          {isFetching && (
+            <div>
+              <Loadder />
+            </div>
+          )}
           {showConatctList && <Filter />}
           <List />
           {showEmptyBook && <p>Your phonebook is empty. Please add contact.</p>}
